@@ -50,7 +50,9 @@ function SignUp() {
                 </div>
             </div>
             
-            <div className='text-right mb-4 text-[#ff4d2d] cursor-pointer' >
+            <div className='text-right mb-4 text-[#ff4d2d] cursor-pointer' onClick={()=>{
+                navigate("/reset-pass")
+            }} >
               Forgot Password
             </div>
 

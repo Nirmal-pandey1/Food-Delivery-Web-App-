@@ -20,6 +20,7 @@ function SignUp() {
     function handleSignUp(){
            const res=axios.post("http://localhost:8000/api/auth/signup",{fullName,email,mobile,role,password});
            console.log(res);
+           
     }
   return (
     <div className='min-h-screen w-full flex items-center justify-center p-4' style={{backgroundColor:bgColor}}>

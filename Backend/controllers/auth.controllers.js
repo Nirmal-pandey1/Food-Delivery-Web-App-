@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import genToken from "../utils/token.js";
+import { sendEmail } from "../utils/email.js";
 export let signUp  = async(req, res) => {
     try {
         let {fullName, email, password,mobile,role} = req.body;
@@ -66,4 +67,31 @@ export let signOut  = async(req, res) => {
     } catch (error) {
         res.status(500).json({message:error.message});
     }   
+}
+
+export let emailExist  = async(req, res) => {
+    try {
+        let {email} = req.body;
+        let user=await User.findOne({email});
+        if(user){
+            return res.status(200).json({exist:true});
+            
+        }
+        return res.status(200).json({exist:false});
+    } catch (error) {
+        res.status(500).json({message:error.message});
+    }   
+}
+
+export let sendMail  = async(req, res) => {
+    try{
+        // let {to, subject, text} = req.body;
+        await sendEmail("bishtaditya9064@gmail.com", "from POSTMAN API", "jeellp");
+        res.status(200).json({message:"Email sent successfully"});
+
+
+    }
+    catch(error){
+        res.status(500).json({message:error.message});  
+    }
 }
